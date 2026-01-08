@@ -62,41 +62,45 @@ function randomIntegerNumberGenerator(ceiling) {
 // Usable symbols: ! @ # $ % & * ( ) _ = + [ ] { } ; : , . < > ? |
 function addSymbolToPassword(password) {
     const symbols = "!@#$%&*()_=+[]{};:,.<>?|";
-    let usableExclamationMark = false;
-    let usableAtSign = false;
-    let usableHashTag = false;
-    let usableDollarSign = false;
-    let usablePercentSign = false;
-    let usablempersandSign = false;
-    let usableAsteriskSign = false;
-    let usableOpeningParenthesis = false;
-    let usableClosingParenthesis = false;
-    let usableUnderscoreSign = false;
-    let usableEqualSign = false;
-    let usablePlusSign = false;
-    let usableOpeningBracket = false;
-    let usableClosingBracket = false;
-    let usableOpeningCurlyBrace = false;
-    let usableClosingCurlyBrace = false;
-    let usableSemicolonSign = false;
-    let usableColonSign = false;
-    let usableCommaSign = false;
-    let usablePeriodSign = false;
-    let usableLessThanSign = false;
-    let usableGreaterThanSign = false;
-    let usableQuestionMark = false;
-    let usableVerticalBar = false;
+    // Constants defining replacement options
+    const AOreplacements = ["@", "&", "*"];
+    const EHreplacements = ["#"];
+    const Kreplacements = ["<"];
+    const LI1replacements = ["!","(", ")","[", "]","|"];
+    const Sreplacements = ["$"];
+    const Treplacements = ["+"];
+
+   
+    let lacksSymbol = true;
+    while (lacksSymbol){
+        let randomPositionReplacer = randomIntegerNumberGenerator(password.length);
+        let chosenCharacter = password[randomPositionReplacer];
+        console.log("Chosen Characters: " + chosenCharacter);
+        switch (chosenCharacter) {
+            case "a":
+                password[randomPositionReplacer] = "@";
+
+                        let chars = password.split("");
+                        chars[randomPositionReplacer] = "@";
+                        password = chars.join("");
 
 
+                lacksSymbol = false;
+                break;
+            case "o":
+                password[randomPositionReplacer] = "@";
 
-    let randomPositionReplacer = randomIntegerNumberGenerator(password.length);
-    let symbolExists = false;
-    while (symbolExists){
-        password.forEach(element => {
-            
-        });
+                        chars = password.split("");
+                        chars[randomPositionReplacer] = "@";
+                        password = chars.join("");
+
+                lacksSymbol = false;
+                break;
+            default:
+                console.log("No replacement made, trying again.");
+                lacksSymbol = false;
+                break;
+        }
     }
-
-
     return password;
 }
