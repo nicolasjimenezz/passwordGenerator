@@ -17,25 +17,26 @@ console.log(adjectives);
 let adjective = adjectives[random0toarrayrange_unbiased()];
 let noun = nouns[random0toarrayrange_unbiased()];
 
-let numberPosition= Math.floor(Math.random() * 3); // random number between 0 and 2 inclusive
+let numberPosition= randomIntegerNumberGenerator(3); // random number between 0 and 2 inclusive
 console.log(numberPosition);
 
 switch (numberPosition) {
     case 0:
-        password = randomNumberGenerator(99) + adjective + noun;
+        password = randomIntegerNumberGenerator(99) + adjective + noun;
         break;
     case 1:
-        password = adjective + randomNumberGenerator(99) + noun;
+        password = adjective + randomIntegerNumberGenerator(99) + noun;
         break;
     case 2:
-        password = adjective + noun +randomNumberGenerator(99);
+        password = adjective + noun +randomIntegerNumberGenerator(99);
         break;
     default:
         console.log("Error in numberPosition switch");
         break;
 }
 
-password = adjective + noun;
+addSymbolToPassword(password);
+
 console.log("Enjoy your new password: \n" + password);
 
 // Generates a random integer from 0 to 50000 inclusive without modulus bias (true random)
@@ -52,17 +53,12 @@ function random0toarrayrange_unbiased() {
 }
 
 // Random number generator (Pseudo-random and requires a ceiling number)
-function randomNumberGenerator(ceiling) {
-    let number = Math.floor(Math.random() * ceiling + 1); // random number between 0 and ceiling inclusive
+function randomIntegerNumberGenerator(ceiling) {
+    let number = Math.floor(Math.random() * ceiling ); // random number between 0 and ceiling inclusive
     return number;
 }
 
-// Providing a random word to test the unbiased function
-// let place = random0toarrayrange_unbiased();
-// console.log(place);
-// console.log(words[place]);
-
-// Creating a password
+// Replacing letters or inputting for symbols
 // Usable symbols: ! @ # $ % & * ( ) _ = + [ ] { } ; : , . < > ? |
 function addSymbolToPassword(password) {
     const symbols = "!@#$%&*()_=+[]{};:,.<>?|";
@@ -90,5 +86,17 @@ function addSymbolToPassword(password) {
     let usableGreaterThanSign = false;
     let usableQuestionMark = false;
     let usableVerticalBar = false;
+
+
+
+    let randomPositionReplacer = randomIntegerNumberGenerator(password.length);
+    let symbolExists = false;
+    while (symbolExists){
+        password.forEach(element => {
+            
+        });
+    }
+
+
     return password;
 }
